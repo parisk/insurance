@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{ proposal_form_submission }}</title>
+        <link rel="stylesheet" href="{% static 'brokers/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>{{ proposal_form_submission }}</h1>
+            <h2>Πελάτης</h2>
+            <p>{{ proposal_form_submission.client }}</p>
+
+            {% for field in fields %}
+            <h2>{{ field.field.title }}</h2>
+            <p>{{ field.value }}</p>
+            {% endfor %}
+        </div>
+    </body>
+</html>

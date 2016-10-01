@@ -1,0 +1,6 @@
+{
+    "name": "insurance-brokers",
+    "dependencies": {
+        "bootstrap": "latest"
+    }
+}

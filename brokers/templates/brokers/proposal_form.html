@@ -1,0 +1,45 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{ proposal_form.name }}</title>
+        <link rel="stylesheet" href="{% static 'brokers/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>{{ proposal_form.name }}</h1>
+
+            <form action="" method="POST" >
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Πελάτης</label>
+                    <select name="client" class="form-control" >
+                    {% for client in clients %}
+                        <option value="{{ client.id }}">{{ client.name }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                {% for field in fields %}
+                <div class="form-group">
+                    <label>{{ field.title }}</label>
+                    <input
+                           name="{{ field.id }}"
+                           type="{{ field.field_type }}"
+                           class="form-control"
+                           {% comment %}
+                           {% if field.required %}
+                           required
+                           {% endif %}
+                           {% endcomment %}
+                     />
+                </div>
+
+                {% endfor %}
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
