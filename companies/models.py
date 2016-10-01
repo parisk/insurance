@@ -33,3 +33,14 @@ class Plan(models.Model):
 
     def __str__(self):
         return '%s from %s for %s' % (self.name, self.company, self.sector)
+
+
+class ProposalForm(models.Model):
+    name = models.CharField(max_length=255)
+    plans = models.ManyToManyField(Plan)
+
+    def __unicode__(self):
+        return '%s from %s' % (self.name, self.plans.first().company)
+
+    def __str__(self):
+        return '%s from %s' % (self.name, self.plans.first().company)
