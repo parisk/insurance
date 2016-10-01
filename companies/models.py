@@ -56,3 +56,9 @@ class ProposalFormField(models.Model):
         ('float', 'Float'),
         ('file', 'File'),
     ))
+
+    def __unicode__(self):
+        return '%s in "%s"' % (self.title, self.proposal_form)
+
+    def __str__(self):
+        return '%s in "%s"' % (self.title, self.proposal_form)
