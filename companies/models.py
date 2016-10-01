@@ -44,3 +44,15 @@ class ProposalForm(models.Model):
 
     def __str__(self):
         return '%s from %s' % (self.name, self.plans.first().company)
+
+
+class ProposalFormField(models.Model):
+    proposal_form = models.ForeignKey(ProposalForm)
+    title = models.CharField(max_length=255)
+    required = models.BooleanField(default=True)
+    field_type = models.CharField(max_length=255, choices=(
+        ('boolean', 'Boolean'),
+        ('text', 'Text'),
+        ('float', 'Float'),
+        ('file', 'File'),
+    ))
